@@ -1,16 +1,19 @@
-public class customer extends User{
+import java.util.ArrayList;
+
+public class Customer extends User {
 
     private int account;
     private ArrayList<String> mortgage = new ArrayList();
 
 
-
     //Constructor
-    public customer(String name, int SSN, String nationality, long email, int phoneNumber, long password, int account) {
 
+    public Customer(String name, String SSN, String nationality, long email, int phoneNumber, long password, int account) {
+        super(name, SSN, nationality, email, phoneNumber, password);
+        this.account = account;
     }
 
-// getter and setter
+    // getter and setter
     public int getAccount() {
         return account;
     }
@@ -23,54 +26,5 @@ public class customer extends User{
         return mortgage;
     }
 
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public void setSSN(int SSN) {
-        this.SSN = SSN;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
-    public void setEmail(long email) {
-        this.email = email;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setPassword(long password) {
-        this.password = password;
-    }
-    // Getters
-    public String getName() {
-        return Name;
-    }
-
-    public int getSSN() {
-        return SSN;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public long getEmail() {
-        return email;
-    }
-
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-
-    public long getPassword() {
-        return password;
-    }
 
 }

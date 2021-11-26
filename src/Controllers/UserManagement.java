@@ -1,47 +1,61 @@
-public class UserManagment{
+import java.util.ArrayList;
+
+public class UserManagement {
 
 
     // -----------------------------ARRAYLISTS----------------------------------
 
-    ArrayList<customer> customerList = new ArrayList<>();
+    ArrayList<Customer> customerList = new ArrayList<>();
 
-    public ArrayList<SSN> getCustomerList() {
+
+    public ArrayList<Customer> getCustomerList() {
         return customerList;
     }
-
-
+    //--------------------------------------------------------------------------
     // add home adress maybe?
-    public String registerCustomer(String name, int SSN, String nationality, long email, int phoneNumber, long password, int account){
-        if (containsSSN(SSN) {
-            return "This customer is already registerd"
-        }else if (nationality.isEmpty()){
-            return "Please enter the cuntry you are currently living in"
+    public String registerCustomer(String name, String SSN, String nationality, long email, int phoneNumber, long password, int account) {
+        if (containsCustomer(SSN) || SSN.matches("[a-zA-Z]+")) { //checks for letters in ssn and if existing is there
+            return "This customer is already registerd";
+        } else if (nationality.isEmpty()) {
+            return "Please enter the cuntry you are currently living in";
 
-        } else if (password.size() < 8) {  // We can expend this later, number, sign !%#
-        return "Password is weak, must eat more protin"
+        } else if (name.isBlank()) {
+            return "Please enter your first name and last name";
 
-        } else if (email.size() < 8 || ) {
-            return "Invalid email"
+        } else if (password < 8) {  // We can expend this later, number, sign !%#
+            return "Password is weak, must eat more protin";
 
-        }else if (phoneNumber.size() < 10) {
-            return "Invalid number"
+        } else if (email < 8) {
+            return "Invalid email";
 
-        }else {
-            Customer customer = new Customer(String name, int SSN, String nationality,long email, int phoneNumber,
-            long password, int account);
+        } else if (phoneNumber < 10) {
+            return "Invalid number";
+
+        } else {
+            Customer customer = new Customer(name, SSN, nationality, email, phoneNumber,
+                    password, account);
             customerList.add(customer);
-            return "Customer registerd successfully" // add toString later
+            return "Customer registered successfully"; // add toString later
         }
     }
 
-    public boolean containsSSN(int SSN) // checks for existing SSN in customerList
+    public boolean containsCustomer(String SSN) { // checks for existing SSN in customerList
 
         for (int i = 0; i < getCustomerList().size(); i++) {
-        if (getCustomerList().get(i).getSSN().equals(SSN)) {
-            return true;
+            if (getCustomerList().get(i).getSSN().equals(SSN)) {
+                return true;
+            }
         }
-    }
         return false;
-}
+    }
 
+    public Customer findSSN(String SSN) {
+
+        for (int i = 0; i < customerList.size(); i++) {
+            if (customerList.get(i).getSSN().equals(SSN)) {
+                return customerList.get(i);
+            }
+        }
+        return null;
+    }
 }
