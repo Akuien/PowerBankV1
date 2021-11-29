@@ -1,6 +1,8 @@
 package Entities;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UserManagement {
 
@@ -15,7 +17,7 @@ public class UserManagement {
     }
     //--------------------------------------------------------------------------
     // add home adress maybe?
-    public String registerCustomer(String name, String SSN, String nationality, String email, int phoneNumber, String password, int account) {
+    public String registerCustomer(String name, String SSN, String nationality, String email, String phoneNumber, String password, int account) {
         if (containsCustomer(SSN) || SSN.matches("[a-zA-Z]+")) { //checks for letters in ssn and if existing is there
             return "This customer is already registerd";
         } else if (nationality.isEmpty()) {
@@ -27,10 +29,10 @@ public class UserManagement {
         } else if (!validPassword(password)) {  // We can expend this later, number, sign !%#
             return "Password is weak, must eat more protin";
 
-        } else if (email.length() < 8) {
+        } else if (!validEmail(email)) {
             return "Invalid email";
 
-        } else if (phoneNumber < 10) {
+        } else if (!validPhoneNumber(phoneNumber)) {
             return "Invalid number";
 
         } else {
@@ -77,5 +79,20 @@ public class UserManagement {
         }
         return true;
     }
+
+    public static boolean validEmail(String email){ // Validates email // https://www.youtube.com/watch?v=OOdO785p3Qo
+
+        String emailRegex = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+        Pattern emailPattern = Pattern.compile(emailRegex,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = emailPattern.matcher(email);
+        return matcher.find();
+    }
+
+    public static boolean validPhoneNumber(String phone){
+        return phone.charAt(0) == '0' && phone.charAt(1) == '7' && phone.length() == 11 && phone.matches("[0-9]+");
+        // first char is 0 and second char is 7. and then the length of code is 11. And then we check that its in
+        //between 0-9. since a phone number can have any number between 0-9 in it.
+    }
+
 
 }

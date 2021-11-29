@@ -10,7 +10,7 @@ public class Customer extends User {
 
     //Constructor
 
-    public Customer(String name, String SSN, String nationality, String email, int phoneNumber, String password, int account) {
+    public Customer(String name, String SSN, String nationality, String email, String phoneNumber, String password, int account) {
         super(name, SSN, nationality, email, phoneNumber, password);
         this.account = account;
     }

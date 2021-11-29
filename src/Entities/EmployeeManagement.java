@@ -1,6 +1,8 @@
 package Entities;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class EmployeeManagement {
 
@@ -14,22 +16,22 @@ public class EmployeeManagement {
     }
 
 
-    public String registerEmployee(String name, String SSN, String nationality, String email, int phoneNumber, String password) {
+    public String registerEmployee(String name, String SSN, String nationality, String email, String phoneNumber, String password) {
         if (containsEmployee(SSN) || SSN.matches("[a-zA-Z]+")) {
-            return "This customer is already registerd";
+            return "This customer is already registered";
         } else if (nationality.isEmpty()) {
             return "Please enter the country you are currently living in";
 
-        } else if (name.isBlank()) {
+        } else if (name.isBlank() || !(name.equals(" "))) {
             return "Please enter your first name and last name";
 
-        } else if (!validPassword(password)) {  // We can expend this later, number, sign !%#
-            return "Password is weak, must eat more protin";
+        } else if (!validPassword(password)) {
+            return "Password is weak";
 
-        } else if (email.length() < 8) {
+        } else if (!validEmail(email)) {
             return "Invalid email";
 
-        } else if (phoneNumber < 10) {
+        } else if (!validPhoneNumber(phoneNumber)) {
             return "Invalid number";
 
         } else {
@@ -40,8 +42,8 @@ public class EmployeeManagement {
         }
     }
 
-    public String registerManager(String name, String SSN, String nationality, String email, int phoneNumber, String password){
-        if (name.isBlank()) {
+    public String registerManager(String name, String SSN, String nationality, String email, String phoneNumber, String password){
+        if (name.isBlank() || !(name.equals(" "))) {
             return "Name cannot be empty";
 
         } else if (containsEmployee(SSN) || SSN.matches("[a-zA-Z]+")) {
@@ -53,10 +55,10 @@ public class EmployeeManagement {
         }else if (nationality.isEmpty()) {
             return "Please enter the country you are currently living in";
 
-        } else if (email.length() < 8) {
+        } else if (!validEmail(email)) {
             return "Invalid email";
 
-        }else if (phoneNumber < 10) {
+        }else if (!validPhoneNumber(phoneNumber)) {
             return "Invalid number";
 
         } else {
@@ -64,6 +66,27 @@ public class EmployeeManagement {
             employeeList.add(employee);
             return "Customer registered successfully"; // add toString later
         }
+    }
+
+    public String deleteEmployee (String SSN){
+
+        if (containsEmployee(SSN)) {
+            Employee employeeToDelete = findEmployee(SSN);
+            employeeList.remove(employeeToDelete);
+            return "";
+        }
+        return "";
+
+    }
+
+    public Employee findEmployee (String SSN) {
+
+        for (int i = 0; i < employeeList.size(); i++) {
+            if (employeeList.get(i).getSSN().equals(SSN)) {
+                return employeeList.get(i);
+            }
+        }
+        return null;
     }
 
 
@@ -93,6 +116,20 @@ public class EmployeeManagement {
             }
         }
         return true;
+    }
+
+    public static boolean validEmail(String email){ // Validates email // https://www.youtube.com/watch?v=OOdO785p3Qo
+
+        String emailRegex = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+        Pattern emailPattern = Pattern.compile(emailRegex,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = emailPattern.matcher(email);
+        return matcher.find();
+    }
+
+    public static boolean validPhoneNumber(String phoneNumber){
+        return phoneNumber.charAt(0) == '0' && phoneNumber.charAt(1) == '7' && phoneNumber.length() == 11 && phoneNumber.matches("[0-9]+");
+        // first char is 0 and second char is 7. and then the length of code is 11. And then we check that its in
+        //between 0-9. since a phone number can have any number between 0-9 in it.
     }
 
 
