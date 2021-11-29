@@ -1,3 +1,5 @@
+package Entities;
+
 public class Manager extends User {
 
 

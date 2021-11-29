@@ -1,3 +1,5 @@
+package Entities;
+
 public abstract class User {
 
     // attributes
@@ -52,8 +54,6 @@ public abstract class User {
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-
 
     public void setPassword(long password) {
         this.password = password;
