@@ -5,7 +5,7 @@ public class UserManagement {
 
     // -----------------------------ARRAYLISTS----------------------------------
 
-    ArrayList<Customer> customerList = new ArrayList<>();
+    ArrayList<Customer> customerList = new ArrayList<Customer>();
 
 
     public ArrayList<Customer> getCustomerList() {
