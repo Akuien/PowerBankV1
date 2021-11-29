@@ -15,7 +15,7 @@ public class UserManagement {
     }
     //--------------------------------------------------------------------------
     // add home adress maybe?
-    public String registerCustomer(String name, String SSN, String nationality, long email, int phoneNumber, long password, int account) {
+    public String registerCustomer(String name, String SSN, String nationality, String email, int phoneNumber, String password, int account) {
         if (containsCustomer(SSN) || SSN.matches("[a-zA-Z]+")) { //checks for letters in ssn and if existing is there
             return "This customer is already registerd";
         } else if (nationality.isEmpty()) {
@@ -24,10 +24,10 @@ public class UserManagement {
         } else if (name.isBlank()) {
             return "Please enter your first name and last name";
 
-        } else if (password < 8) {  // We can expend this later, number, sign !%#
+        } else if (!validPassword(password)) {  // We can expend this later, number, sign !%#
             return "Password is weak, must eat more protin";
 
-        } else if (email < 8) {
+        } else if (email.length() < 8) {
             return "Invalid email";
 
         } else if (phoneNumber < 10) {
@@ -60,4 +60,22 @@ public class UserManagement {
         }
         return null;
     }
+
+    public boolean validPassword(String password) {
+        for (int i = 0; i < password.length(); i++) {
+            if (Character.isUpperCase(password.charAt(i))) ;
+        }
+        for (int n =0; n < password.length(); n++){
+            if (password.length() <= 7);
+        }
+        for (int p = 0; p < password.length(); p++) {
+            if (Character.isLowerCase(password.charAt(p))) ;
+        }
+        for (int x = 0; x < password.length(); x++) {
+            if (Character.isDigit(password.charAt(x))) {
+            }
+        }
+        return true;
+    }
+
 }

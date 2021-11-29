@@ -6,13 +6,13 @@ public abstract class User {
     private String Name;
     private String SSN; // Username for log-in // SSN = 199702021212
     private String nationality;
-    public long email;
+    public String email;
     public int phoneNumber;
-    private long password;
+    private String password;
 
 
     // Constructor
-    public User(String name, String SSN, String nationality, long email, int phoneNumber, long password) {
+    public User(String name, String SSN, String nationality, String email, int phoneNumber, String password) {
         this.Name = name;
         this.SSN = SSN;
         this.nationality = nationality;
@@ -47,7 +47,7 @@ public abstract class User {
         this.nationality = nationality;
     }
 
-    public void setEmail(long email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -55,7 +55,7 @@ public abstract class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setPassword(long password) {
+    public void setPassword(String password) {
         this.password = password;
     }
     // Getters
@@ -71,7 +71,7 @@ public abstract class User {
         return nationality;
     }
 
-    public long getEmail() {
+    public String getEmail() {
         return email;
     }
 
@@ -80,7 +80,7 @@ public abstract class User {
     }
 
 
-    public long getPassword() {
+    public String getPassword() {
         return password;
     }
 }
