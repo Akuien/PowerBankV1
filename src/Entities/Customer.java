@@ -9,6 +9,7 @@ public class Customer extends User {
     private ArrayList<BankAccount> bankAccounts = new ArrayList();
 
 
+
     //Constructor
 
     public Customer(String firstName, String lastName, String SSN, String nationality, String email, String phoneNumber, String password, int account) {

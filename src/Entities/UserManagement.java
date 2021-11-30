@@ -16,7 +16,7 @@ public class UserManagement {
         return customerList;
     }
     //--------------------------------------------------------------------------
-    // add home adress maybe?
+
     public String registerCustomer(String firstName,String lastName, String SSN, String nationality, String email, String phoneNumber, String password, int account) {
         if (containsCustomer(SSN) || SSN.matches("[a-zA-Z]+")) { //checks for letters in ssn and if existing is there
             return "This customer is already registered";
@@ -118,5 +118,7 @@ public class UserManagement {
         }
         return null;
     }
+
+
 
 }

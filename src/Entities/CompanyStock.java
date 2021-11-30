@@ -2,7 +2,7 @@ package Entities;
 
 import java.util.ArrayList;
 
-public class Stock {
+public class CompanyStock {
 
     private String name; // Shorter name then the company name "AMZN".
     private String companyName; // example Amazon
@@ -12,13 +12,13 @@ public class Stock {
     private double TotalCapitalShares; // total amount of shares that are for sale.
     private int totalStockHolder; // amount of people owns the stock
 
-    private ArrayList<Stock> StockList = new ArrayList();
+    private ArrayList<CompanyStock> stockList = new ArrayList();
 
 
     //constructor
 
 
-    public Stock(String name, String companyName, double tradingPrice, double valuePercentChange, double companyMarketValue, double totalCapitalShares, int totalStockHolder) {
+    public CompanyStock(String name, String companyName, double tradingPrice, double valuePercentChange, double companyMarketValue, double totalCapitalShares, int totalStockHolder) {
         this.name = name;
         this.companyName = companyName;
         this.tradingPrice = tradingPrice;
@@ -27,7 +27,6 @@ public class Stock {
         this.TotalCapitalShares = totalCapitalShares;
         this.totalStockHolder = totalStockHolder;
     }
-
 
 
     public String getName() {
@@ -86,11 +85,12 @@ public class Stock {
         this.totalStockHolder = totalStockHolder;
     }
 
-    public ArrayList<Stock> getStockList() {
-        return StockList;
+    public ArrayList<CompanyStock> getStockList() {
+        return stockList;
     }
 
-    public void setStockList(ArrayList<Stock> stockList) {
-        StockList = stockList;
+    public void setStockList(ArrayList<CompanyStock> stockList) {
+        this.stockList = stockList;
     }
 }
+
