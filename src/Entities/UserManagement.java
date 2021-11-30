@@ -17,14 +17,17 @@ public class UserManagement {
     }
     //--------------------------------------------------------------------------
     // add home adress maybe?
-    public String registerCustomer(String name, String SSN, String nationality, String email, String phoneNumber, String password, int account) {
+    public String registerCustomer(String firstName,String lastName, String SSN, String nationality, String email, String phoneNumber, String password, int account) {
         if (containsCustomer(SSN) || SSN.matches("[a-zA-Z]+")) { //checks for letters in ssn and if existing is there
             return "This customer is already registered";
         } else if (nationality.isEmpty()) {
             return "Please enter the country you are currently living in";
 
-        } else if (name.isBlank()) {
-            return "Please enter your first name and last name";
+        }  else if (firstName.isBlank()) {
+        return "Please enter your first name";
+
+         } else if (lastName.isBlank()) {
+        return "Please enter your last name";
 
         } else if (!validPassword(password)) {  // We can expend this later, number, sign !%#
             return "Password is weak, must eat more protein";
@@ -36,7 +39,7 @@ public class UserManagement {
             return "Invalid number";
 
         } else {
-            Customer customer = new Customer(name, SSN, nationality, email, phoneNumber,
+            Customer customer = new Customer(firstName,lastName, SSN, nationality, email, phoneNumber,
                     password, account);
             customerList.add(customer);
             return "Customer registered successfully"; // add toString later

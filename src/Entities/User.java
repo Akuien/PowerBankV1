@@ -3,8 +3,9 @@ package Entities;
 public abstract class User {
 
     // attributes
-    private String Name;
-    private String SSN; // Username for log-in // SSN = 199702021212
+    private String firstName;
+    private String lastName;
+    private final String SSN; // Username for log-in // SSN = 199702021212
     private String nationality;
     public String email;
     public String phoneNumber;
@@ -12,36 +13,35 @@ public abstract class User {
 
 
     // Constructor
-    public User(String name, String SSN, String nationality, String email, String phoneNumber, String password) {
-        this.Name = name;
+    public User(String firstName, String lastName, String SSN, String nationality, String email, String phoneNumber, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.SSN = SSN;
         this.nationality = nationality;
         this.email = email;
         this.phoneNumber = phoneNumber;
-
         this.password = password;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "User{" +
-                "Name='" + Name + '\'' +
-                ", SSN=" + SSN +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", SSN='" + SSN + '\'' +
                 ", nationality='" + nationality + '\'' +
-                ", email=" + email +
-                ", phoneNumber=" + phoneNumber +
-                ", password=" + password +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
+
     //Setters
 
-    public void setName(String name) {
-        Name = name;
+    public void setFirstName(String firstName) {
+        firstName = firstName;
     }
-
-    public void setSSN(String SSN) {
-        this.SSN = SSN;
-    }
+    public void setLastName(String lastName){ lastName = firstName; }
 
     public void setNationality(String nationality) {
         this.nationality = nationality;
@@ -60,7 +60,15 @@ public abstract class User {
     }
     // Getters
     public String getName() {
-        return Name;
+        return firstName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public String getSSN() {

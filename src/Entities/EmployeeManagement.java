@@ -16,14 +16,18 @@ public class EmployeeManagement {
     }
 
 
-    public String registerEmployee(String name, String SSN, String nationality, String email, String phoneNumber, String password) {
+    public String registerEmployee(String firstName,String lastName, String SSN, String nationality, String email, String phoneNumber, String password) {
+
         if (containsEmployee(SSN) || SSN.matches("[a-zA-Z]+")) {
             return "This customer is already registered";
         } else if (nationality.isEmpty()) {
             return "Please enter the country you are currently living in";
 
-        } else if (name.isBlank() || !(name.equals(" "))) {
-            return "Please enter your first name and last name";
+        } else if (firstName.isBlank()) {
+            return "Please enter your first name";
+
+        } else if (lastName.isBlank()) {
+            return "Please enter your last name";
 
         } else if (!validPassword(password)) {
             return "Password is weak";
@@ -35,16 +39,20 @@ public class EmployeeManagement {
             return "Invalid number";
 
         } else {
-            Employee employee = new Employee(name, SSN, nationality, email, phoneNumber,
+            Employee employee = new Employee(firstName,lastName, SSN, nationality, email, phoneNumber,
                     password);
             employeeList.add(employee);
             return "Customer registered successfully"; // add toString later
         }
     }
 
-    public String registerManager(String name, String SSN, String nationality, String email, String phoneNumber, String password){
-        if (name.isBlank() || !(name.equals(" "))) {
-            return "Name cannot be empty";
+    public String registerManager(String firstName,String lastName, String SSN, String nationality, String email, String phoneNumber, String password) {
+
+        if (firstName.isBlank()) {
+            return "Please enter your first name and last name";
+
+        } else if (lastName.isBlank()) {
+            return "Please enter your first name and last name";
 
         } else if (containsEmployee(SSN) || SSN.matches("[a-zA-Z]+")) {
             return "Employee is already registered";
@@ -62,7 +70,7 @@ public class EmployeeManagement {
             return "Invalid number";
 
         } else {
-            Employee employee = new Employee(name, SSN, nationality, email, phoneNumber, password);
+            Employee employee = new Employee(firstName,lastName, SSN, nationality, email, phoneNumber, password);
             employeeList.add(employee);
             return "Customer registered successfully"; // add toString later
         }
@@ -73,7 +81,6 @@ public class EmployeeManagement {
         if (containsEmployee(SSN)) {
             Employee employeeToDelete = findEmployee(SSN);
             employeeList.remove(employeeToDelete);
-            return "";
         }
         return "";
 
