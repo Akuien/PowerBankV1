@@ -9,7 +9,7 @@ public class UserManagement {
 
     // -----------------------------ARRAYLISTS----------------------------------
 
-    ArrayList<Customer> customerList = new ArrayList<Customer>();
+    ArrayList<Customer> customerList = new ArrayList<>();
 
 
     public ArrayList<Customer> getCustomerList() {
@@ -19,15 +19,15 @@ public class UserManagement {
     // add home adress maybe?
     public String registerCustomer(String name, String SSN, String nationality, String email, String phoneNumber, String password, int account) {
         if (containsCustomer(SSN) || SSN.matches("[a-zA-Z]+")) { //checks for letters in ssn and if existing is there
-            return "This customer is already registerd";
+            return "This customer is already registered";
         } else if (nationality.isEmpty()) {
-            return "Please enter the cuntry you are currently living in";
+            return "Please enter the country you are currently living in";
 
         } else if (name.isBlank()) {
             return "Please enter your first name and last name";
 
         } else if (!validPassword(password)) {  // We can expend this later, number, sign !%#
-            return "Password is weak, must eat more protin";
+            return "Password is weak, must eat more protein";
 
         } else if (!validEmail(email)) {
             return "Invalid email";
@@ -94,5 +94,26 @@ public class UserManagement {
         //between 0-9. since a phone number can have any number between 0-9 in it.
     }
 
+
+    public String deleteCustomer (String SSN){
+
+        if (containsCustomer(SSN)) {
+            Customer customerToDelete = findCustomer(SSN);
+            customerList.remove(customerToDelete);
+            return "";
+        }
+        return "";
+
+    }
+
+    public Customer findCustomer (String SSN) {
+
+        for (Customer customer : customerList) {
+            if (customer.getSSN().equals(SSN)) {
+                return customer;
+            }
+        }
+        return null;
+    }
 
 }

@@ -9,7 +9,7 @@ public class EmployeeManagement {
 
     // -----------------------------ARRAYLISTS----------------------------------
 
-    ArrayList<Employee> employeeList = new ArrayList<Employee>();
+    ArrayList<Employee> employeeList = new ArrayList<>();
 
     public ArrayList<Employee> getEmployeeList() {
         return employeeList;
@@ -81,9 +81,9 @@ public class EmployeeManagement {
 
     public Employee findEmployee (String SSN) {
 
-        for (int i = 0; i < employeeList.size(); i++) {
-            if (employeeList.get(i).getSSN().equals(SSN)) {
-                return employeeList.get(i);
+        for (Employee employee : employeeList) {
+            if (employee.getSSN().equals(SSN)) {
+                return employee;
             }
         }
         return null;
