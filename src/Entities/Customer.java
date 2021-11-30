@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class Customer extends User {
 
     private int account;
-    private ArrayList<String> mortgage = new ArrayList();
+    private ArrayList<Mortgage> mortgages = new ArrayList();
+    private ArrayList<BankAccount> bankAccounts = new ArrayList();
 
 
     //Constructor
@@ -24,9 +25,10 @@ public class Customer extends User {
         this.account = account;
     }
 
-    public ArrayList<String> getMortgage() {
-        return mortgage;
+    public ArrayList<Mortgage> getMortgage() {
+        return mortgages;
     }
+    public ArrayList<BankAccount> getBankAccounts(){return bankAccounts;}
 
 
 
