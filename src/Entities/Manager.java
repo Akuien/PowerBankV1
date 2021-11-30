@@ -9,4 +9,6 @@ public class Manager extends User {
         super(firstName,lastName,SSN,nationality,email,phoneNumber,password);
 
     }
+
+
 }

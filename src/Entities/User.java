@@ -40,10 +40,14 @@ public abstract class User {
 
     //Setters
 
+
     public void setFirstName(String firstName) {
-        firstName = firstName;
+        this.firstName = firstName;
     }
-    public void setLastName(String lastName){ lastName = firstName; }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public void setNationality(String nationality) {
         this.nationality = nationality;

@@ -82,7 +82,7 @@ public class EmployeeManagement {
             Employee employeeToDelete = findEmployee(SSN);
             employeeList.remove(employeeToDelete);
         }
-        return "";
+        return "Employee was successfully deleted";
 
     }
 
