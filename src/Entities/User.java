@@ -10,6 +10,7 @@ public abstract class User {
     public String email;
     public String phoneNumber;
     private String password;
+    private String accessToken;
 
 
     // Constructor
@@ -21,6 +22,7 @@ public abstract class User {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
+        this.accessToken = null;
     }
 
     @Override

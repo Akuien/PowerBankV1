@@ -1,2 +1,4 @@
-package Controllers.hola;public class txt {
+package Controllers.hola;
+
+public class txt {
 }

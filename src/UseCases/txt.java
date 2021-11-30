@@ -1,2 +1,4 @@
-package UseCases;public class txt {
+package UseCases;
+
+public class txt {
 }
