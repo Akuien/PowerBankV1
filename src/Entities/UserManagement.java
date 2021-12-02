@@ -151,7 +151,6 @@ public class UserManagement {
 
     public String logIn(String email, String password) throws Exception{
         Customer customer = findCustomerByEmail(email);
-
         if (customer == null || !customer.getPassword().equals(password)){
             throw new EmailPasswordDoesNotExistException();
         }
