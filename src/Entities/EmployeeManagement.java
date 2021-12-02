@@ -11,6 +11,10 @@ public class EmployeeManagement {
 
     ArrayList<Employee> employeeList = new ArrayList<>();
 
+    public EmployeeManagement() {
+        employeeList = employeeList;
+    }
+
     public ArrayList<Employee> getEmployeeList() {
         return employeeList;
     }

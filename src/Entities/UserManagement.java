@@ -14,6 +14,7 @@ public class UserManagement {
 
     ArrayList<Customer> customerList = new ArrayList<>();
 
+    public UserManagement() {customerList = customerList;}
 
     public ArrayList<Customer> getCustomerList() {
         return customerList;
