@@ -5,7 +5,7 @@ public abstract class User {
     // attributes
     private String firstName;
     private String lastName;
-    private String SSN; // Username for log-in // SSN = 199702021212
+    private long SSN; // Username for log-in // SSN = 199702021212
     private String nationality;
     public String email;
     public String phoneNumber;
@@ -14,7 +14,7 @@ public abstract class User {
 
 
     // Constructor
-    public User(String firstName, String lastName, String SSN, String nationality, String email, String phoneNumber, String password) {
+    public User(String firstName, String lastName, long SSN, String nationality, String email, String phoneNumber, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.SSN = SSN;
@@ -77,7 +77,7 @@ public abstract class User {
         return lastName;
     }
 
-    public String getSSN() {
+    public long getSSN() {
         return SSN;
     }
 
@@ -97,7 +97,7 @@ public abstract class User {
         return password;
     }
 
-    public void setSSN(String SSN) {
+    public void setSSN(long SSN) {
         this.SSN = SSN;
     }
 

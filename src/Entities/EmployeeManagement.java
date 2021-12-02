@@ -11,14 +11,18 @@ public class EmployeeManagement {
 
     ArrayList<Employee> employeeList = new ArrayList<>();
 
+    public EmployeeManagement() {
+        employeeList = employeeList;
+    }
+
     public ArrayList<Employee> getEmployeeList() {
         return employeeList;
     }
 
 
-    public String registerEmployee(String firstName,String lastName, String SSN, String nationality, String email, String phoneNumber, String password) {
+    public String registerEmployee(String firstName,String lastName, long SSN, String nationality, String email, String phoneNumber, String password) {
 
-        if (containsEmployee(SSN) || SSN.matches("[a-zA-Z]+")) {
+        if (containsEmployee(SSN)) {
             return "This customer is already registered";
         } else if (nationality.isEmpty()) {
             return "Please enter the country you are currently living in";
@@ -46,7 +50,7 @@ public class EmployeeManagement {
         }
     }
 
-    public String registerManager(String firstName,String lastName, String SSN, String nationality, String email, String phoneNumber, String password) {
+    public String registerManager(String firstName,String lastName, long SSN, String nationality, String email, String phoneNumber, String password) {
 
         if (firstName.isBlank()) {
             return "Please enter your first name and last name";
@@ -54,7 +58,7 @@ public class EmployeeManagement {
         } else if (lastName.isBlank()) {
             return "Please enter your first name and last name";
 
-        } else if (containsEmployee(SSN) || SSN.matches("[a-zA-Z]+")) {
+        } else if (containsEmployee(SSN)) {
             return "Employee is already registered";
 
         }else if (!validPassword(password)){
@@ -76,7 +80,7 @@ public class EmployeeManagement {
         }
     }
 
-    public String deleteEmployee (String SSN){
+    public String deleteEmployee (long SSN){
 
         if (containsEmployee(SSN)) {
             Employee employeeToDelete = findEmployee(SSN);
@@ -86,10 +90,10 @@ public class EmployeeManagement {
 
     }
 
-    public Employee findEmployee (String SSN) {
+    public Employee findEmployee (long SSN) {
 
         for (Employee employee : employeeList) {
-            if (employee.getSSN().equals(SSN)) {
+            if (employee.getSSN() == SSN) {
                 return employee;
             }
         }
@@ -97,10 +101,10 @@ public class EmployeeManagement {
     }
 
 
-    public boolean containsEmployee(String SSN) { // checks for existing SSN in customerList
+    public boolean containsEmployee(long SSN) { // checks for existing SSN in customerList
 
         for (int i = 0; i < getEmployeeList().size(); i++) {
-            if (getEmployeeList().get(i).getSSN().equals(SSN)) {
+            if (getEmployeeList().get(i).getSSN() == SSN) {
                 return true;
             }
         }

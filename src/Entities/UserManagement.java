@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.UUID; //library for creating the token which is a String of alphanumeric characters that will differentiate the users that are logged in or logged out.
-
 public class UserManagement {
 
 
@@ -15,14 +14,15 @@ public class UserManagement {
 
     ArrayList<Customer> customerList = new ArrayList<>();
 
+    public UserManagement() {customerList = customerList;}
 
     public ArrayList<Customer> getCustomerList() {
         return customerList;
     }
-    //--------------------------------------------------------------------------
+    //---------------------------------------------------------------------------
 
-    public String registerCustomer(String firstName,String lastName, String SSN, String nationality, String email, String phoneNumber, String password, int account) {
-        if (containsCustomer(SSN) || SSN.matches("[a-zA-Z]+")) { //checks for letters in ssn and if existing is there
+    public String registerCustomer(String firstName,String lastName, long SSN, String nationality, String email, String phoneNumber, String password, int account) {
+        if (containsCustomer(SSN)) { //checks for letters in ssn and if existing is there
             return "This customer is already registered";
         } else if (nationality.isEmpty()) {
             return "Please enter the country you are currently living in";
@@ -50,20 +50,21 @@ public class UserManagement {
         }
     }
 
-    public boolean containsCustomer(String SSN) { // checks for existing SSN in customerList
+    public boolean containsCustomer(long SSN) { // checks for existing SSN in customerList
 
         for (int i = 0; i < getCustomerList().size(); i++) {
-            if (getCustomerList().get(i).getSSN().equals(SSN)) {
+            if (getCustomerList().get(i).getSSN() == SSN) {
                 return true;
             }
         }
         return false;
     }
 
-    public Customer findSSN(String SSN) {
+
+    public Customer findSSN(long SSN) {
 
         for (int i = 0; i < customerList.size(); i++) {
-            if (customerList.get(i).getSSN().equals(SSN)) {
+            if (customerList.get(i).getSSN() == SSN) {
                 return customerList.get(i);
             }
         }
@@ -102,7 +103,7 @@ public class UserManagement {
     }
 
 
-    public String deleteCustomer (String SSN){
+    public String deleteCustomer (long SSN){
 
         if (containsCustomer(SSN)) {
             Customer customerToDelete = findCustomerBySSN(SSN);
@@ -113,9 +114,9 @@ public class UserManagement {
 
     }
 
-    public Customer findCustomerBySSN (String SSN) {
+    public Customer findCustomerBySSN (long SSN) {
         for (Customer customer : customerList) {
-            if (customer.getSSN().equals(SSN)) {
+            if (customer.getSSN() == SSN) {
                 return customer;
             }
         }
