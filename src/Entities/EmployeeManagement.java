@@ -1,6 +1,10 @@
 package Entities;
 
+import Exceptions.AccessTokenDoesNotExistException;
+import Exceptions.EmailPasswordDoesNotExistException;
+
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -181,5 +185,43 @@ public class EmployeeManagement {
         //between 0-9. since a phone number can have any number between 0-9 in it.
     }
 
+    //Getting an employee via accessToken
+    public Employee findEmployeeByAccessToken(String accessToken) {
+        Employee foundEmployee = null;
+        for (Employee employee : employeeList){
+            if (employee.getAccessToken() == accessToken){
+                foundEmployee = employee;
+            }
+        }
+        return foundEmployee;
+    }
 
+    //Getting an employee via email
+    public Employee findEmployeeByEmail(String email) {
+        Employee foundEmployee = null;
+        for (Employee employee : employeeList){
+            if (employee.getEmail() == email){
+                foundEmployee = employee;
+            }
+        }
+        return foundEmployee;
+    }
+
+    public String logIn(String email, String password) throws Exception {
+        Employee employee = findEmployeeByEmail(email);
+        if (employee == null || !employee.getPassword().equals(password)) {
+            throw new EmailPasswordDoesNotExistException();
+        }
+        employee.setAccessToken(UUID.randomUUID().toString());
+        return "Employee " + employee.getSSN() + " has logged in successfully";
+
+    }
+
+    public void logOut(String accessToken) throws Exception{
+        Employee employee = findEmployeeByAccessToken(accessToken);
+        if (employee == null){
+            throw new AccessTokenDoesNotExistException();
+        }
+        employee.setAccessToken(null);
+    }
 }
