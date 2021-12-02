@@ -12,9 +12,16 @@ public class UserManagement {
 
     // -----------------------------ARRAYLISTS----------------------------------
 
-    ArrayList<Customer> customerList = new ArrayList<>();
+    ArrayList<Customer> customerList;
+    ArrayList<BankAccount> bankAccountList;
 
-    public UserManagement() {customerList = customerList;}
+    public UserManagement() {
+        customerList =  new ArrayList<>();
+        bankAccountList = new ArrayList<>();}
+
+    public ArrayList<BankAccount> getBankAccountList() {
+        return bankAccountList;
+    }
 
     public ArrayList<Customer> getCustomerList() {
         return customerList;
@@ -162,6 +169,16 @@ public class UserManagement {
         }
         customer.setAccessToken(null);
         //When the customer has no accessToken then is logged out
+    }
+
+    //Function for checking customers current balance
+    public double checkBalance (long customerSSN){
+        for (BankAccount bankAccount : bankAccountList) {
+            if (bankAccount.getCustomerSSN() == customerSSN) {
+                return bankAccount.getBalance();
+            }
+        }
+        return 0;
     }
 
 
