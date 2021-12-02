@@ -1,8 +1,12 @@
 package Entities;
 
+import Exceptions.AccessTokenDoesNotExistException;
+import Exceptions.EmailPasswordDoesNotExistException;
+
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.UUID; //library for creating the token which is a String of alphanumeric characters that will differentiate the users that are logged in or logged out.
 
 public class UserManagement {
 
@@ -101,7 +105,7 @@ public class UserManagement {
     public String deleteCustomer (String SSN){
 
         if (containsCustomer(SSN)) {
-            Customer customerToDelete = findCustomer(SSN);
+            Customer customerToDelete = findCustomerBySSN(SSN);
             customerList.remove(customerToDelete);
             return "";
         }
@@ -109,14 +113,54 @@ public class UserManagement {
 
     }
 
-    public Customer findCustomer (String SSN) {
-
+    public Customer findCustomerBySSN (String SSN) {
         for (Customer customer : customerList) {
             if (customer.getSSN().equals(SSN)) {
                 return customer;
             }
         }
         return null;
+    }
+
+    //Function for getting a Customer via email
+    public Customer findCustomerByEmail(String email){
+        Customer foundCustomer = null;
+        for (Customer currentCustomer : customerList){
+            if (currentCustomer.getEmail().equals(email)){
+                foundCustomer = currentCustomer;
+            }
+        }
+        return foundCustomer;
+    }
+
+    //Function for getting a Customer via AccessToken
+    public Customer findCustomerByAccessToken(String accessToken){
+        Customer foundCustomer = null;
+        for (Customer currentCustomer : customerList){
+            if (currentCustomer.getAccessToken().equals(accessToken)){
+                foundCustomer = currentCustomer;
+            }
+        }
+        return foundCustomer;
+    }
+
+    public String logIn(String email, String password) throws Exception{
+        Customer customer = findCustomerByEmail(email);
+        if (customer == null || !customer.getPassword().equals(password)){
+            throw new EmailPasswordDoesNotExistException();
+        }
+        customer.setAccessToken(UUID.randomUUID().toString());
+        return "User " + customer.getSSN() + " has logged in successfully";
+        //If we plan on using javaFX we may need to return the token instead of a String
+    }
+
+    public void logOut(String accessToken) throws Exception {
+        Customer customer = findCustomerByAccessToken(accessToken);
+        if (customer == null){
+            throw new AccessTokenDoesNotExistException();
+        }
+        customer.setAccessToken(null);
+        //When the customer has no accessToken then is logged out
     }
 
 

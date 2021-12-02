@@ -5,12 +5,12 @@ public abstract class User {
     // attributes
     private String firstName;
     private String lastName;
-    private final String SSN; // Username for log-in // SSN = 199702021212
+    private String SSN; // Username for log-in // SSN = 199702021212
     private String nationality;
     public String email;
     public String phoneNumber;
     private String password;
-    private String accessToken;
+    private String accessToken; //This token is used for the user to be able to have all the functionalities after log in.
 
 
     // Constructor
@@ -93,8 +93,19 @@ public abstract class User {
         return phoneNumber;
     }
 
-
     public String getPassword() {
         return password;
+    }
+
+    public void setSSN(String SSN) {
+        this.SSN = SSN;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 }
