@@ -2,8 +2,10 @@ package Entities;
 
 import Exceptions.AccessTokenDoesNotExistException;
 import Exceptions.EmailPasswordDoesNotExistException;
+import Exceptions.SSNoRPasswordDoesNotExistException;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.UUID; //library for creating the token which is a String of alphanumeric characters that will differentiate the users that are logged in or logged out.
@@ -27,6 +29,8 @@ public class UserManagement {
         return customerList;
     }
     //---------------------------------------------------------------------------
+
+    UserInput userInput;
 
     public String registerCustomer(String firstName,String lastName, long SSN, String nationality, String email, String phoneNumber, String password, int account) {
         if (containsCustomer(SSN)) { //checks for letters in ssn and if existing is there
@@ -161,6 +165,28 @@ public class UserManagement {
         return "User " + customer.getSSN() + " has logged in successfully";
         //If we plan on using javaFX we may need to return the token instead of a String
     }
+/*    public void logIn() throws Exception{
+        String value;
+        do{
+        //prompts the user to enter their ssn and password.
+        long ssn = userInput.inputLong("Enter your Social Security Number: "); //maybe change to SSN instead.
+        String pw = userInput.inputString("Enter your password: ");
+        //find the user by ssn.
+        Customer customer = findCustomerBySSN(ssn);
+        //if customer or password doesn't exist, then throw an exception.
+        if (customer == null || !customer.getPassword().equals(pw)){
+            throw new SSNoRPasswordDoesNotExistException();
+        }
+        //prompts the user to try again if log in has failed.
+        value = userInput.inputString("Do you want to try again?");
+
+            System.out.println("User " + customer.getSSN() + " has logged in successfully");
+            //if login is successful, then the user gets the token signaling that the user is logged in.
+            customer.setAccessToken(UUID.randomUUID().toString());
+
+        }while(value.equalsIgnoreCase("yes"));
+    }*/
+
 
     public void logOut(String accessToken) throws Exception {
         Customer customer = findCustomerByAccessToken(accessToken);

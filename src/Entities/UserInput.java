@@ -29,5 +29,13 @@ public class UserInput {
         input.nextLine();
         return value;
     }
+    // method that takes in a message like "Enter a long value" and returns that value.
+
+    public long inputLong(String message){
+        System.out.println(message);
+        long value = input.nextLong();
+        input.nextLine();
+        return value;
+    }
 
 }

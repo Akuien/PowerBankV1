@@ -28,6 +28,13 @@ public class CompanyStock {
         this.totalStockHolder = totalStockHolder;
     }
 
+    public double CalCompanyMarketValue(double tradingPrice, int totalStockHolder){
+        companyMarketValue = tradingPrice * totalStockHolder;
+        return companyMarketValue;
+    }
+
+
+
 
     public String getName() {
         return name;
