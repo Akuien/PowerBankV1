@@ -14,20 +14,18 @@ public class EmployeeManagement {
     // -----------------------------ARRAYLISTS----------------------------------
 
     ArrayList<Employee> employeeList = new ArrayList<>();
+    ArrayList<CompanyStock> companyStockList = new ArrayList<>();
 
-    public EmployeeManagement() {
-        employeeList = employeeList;
+    public EmployeeManagement(ArrayList<Employee> employeeList, ArrayList<CompanyStock> companyStockList) {
+        this.employeeList = employeeList;
+        this.companyStockList = companyStockList;
     }
 
     public ArrayList<Employee> getEmployeeList() {
         return employeeList;
     }
 
-    public EmployeeManagement(ArrayList<CompanyStock> companyStockList) {
-        CompanyStockList = companyStockList;
-    }
-    ArrayList<CompanyStock> CompanyStockList = new ArrayList<>();
-    public ArrayList<CompanyStock> getCompanyStockList(){return CompanyStockList;}
+    public ArrayList<CompanyStock> getCompanyStockList(){return companyStockList;}
 
 
     public String registerEmployee(String firstName, String lastName, long SSN, String nationality, String email, String phoneNumber, String password) {
@@ -105,7 +103,7 @@ public class EmployeeManagement {
             return "total number of stockholders can't be negative";
         }else {
             CompanyStock companyStock = new CompanyStock( name,  companyName,  tradingPrice,  valuePercentChange, companyMarketValue, totalCapitalShares, totalStockHolder);
-            CompanyStockList.add(companyStock);
+            companyStockList.add(companyStock);
             return "Company was registered successfully";
         }
     }

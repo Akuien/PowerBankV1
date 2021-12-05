@@ -16,7 +16,9 @@ public class UserManagement {
 
     ArrayList<Customer> customerList = new ArrayList<>();
 
-    public UserManagement() {customerList = customerList;}
+    public UserManagement(ArrayList<Customer> customerList) {
+        this.customerList = customerList;
+    }
 
     public ArrayList<Customer> getCustomerList() {
         return customerList;
@@ -100,6 +102,7 @@ public class UserManagement {
         return matcher.find();
     }
 
+    //Shouldn't the phone no. have 10 digits?
     public static boolean validPhoneNumber(String phone){
         return phone.charAt(0) == '0' && phone.charAt(1) == '7' && phone.length() == 11 && phone.matches("[0-9]+");
         // first char is 0 and second char is 7. and then the length of code is 11. And then we check that its in
@@ -107,14 +110,16 @@ public class UserManagement {
     }
 
 
-    public String deleteCustomer (long SSN){
+    public void deleteCustomer(long SSN){
 
         if (containsCustomer(SSN)) {
             Customer customerToDelete = findCustomerBySSN(SSN);
             customerList.remove(customerToDelete);
-            return "";
+            System.out.println("Customer with SSN: "+ SSN + " deleted!");
         }
-        return "";
+        else{
+            System.out.println("Customer with SSN: "+ SSN + " not found!");
+        }
 
     }
 
