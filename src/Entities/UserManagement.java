@@ -54,6 +54,7 @@ public class UserManagement {
         }
     }
 
+
     public boolean containsCustomer(long SSN) { // checks for existing SSN in customerList
 
         for (int i = 0; i < getCustomerList().size(); i++) {
@@ -117,6 +118,8 @@ public class UserManagement {
         return "";
 
     }
+
+    
 
     public Customer findCustomerBySSN (long SSN) {
         for (Customer customer : customerList) {

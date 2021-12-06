@@ -1,6 +1,7 @@
 package Entities;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class CompanyStock {
 
@@ -12,7 +13,7 @@ public class CompanyStock {
     private double TotalCapitalShares; // total amount of shares that are for sale.
     private int totalStockHolder; // amount of people owns the stock
 
-    private ArrayList<CompanyStock> stockList = new ArrayList();
+    /*private ArrayList<CompanyStock> stockList = new ArrayList();*/
 
 
     //constructor
@@ -32,8 +33,6 @@ public class CompanyStock {
         companyMarketValue = tradingPrice * totalStockHolder;
         return companyMarketValue;
     }
-
-
 
 
     public String getName() {
@@ -92,12 +91,12 @@ public class CompanyStock {
         this.totalStockHolder = totalStockHolder;
     }
 
-    public ArrayList<CompanyStock> getStockList() {
+    /*public ArrayList<CompanyStock> getStockList() {
         return stockList;
     }
 
     public void setStockList(ArrayList<CompanyStock> stockList) {
         this.stockList = stockList;
-    }
+    }*/
 }
 

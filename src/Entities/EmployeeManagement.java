@@ -26,7 +26,9 @@ public class EmployeeManagement {
     public EmployeeManagement(ArrayList<CompanyStock> companyStockList) {
         CompanyStockList = companyStockList;
     }
+
     ArrayList<CompanyStock> CompanyStockList = new ArrayList<>();
+
     public ArrayList<CompanyStock> getCompanyStockList(){return CompanyStockList;}
 
 
