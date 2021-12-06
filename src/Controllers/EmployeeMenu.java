@@ -1,2 +1,4 @@
-package Controllers;public class EmployeeMenu {
+package Controllers;
+
+public class EmployeeMenu {
 }

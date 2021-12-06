@@ -1,2 +1,4 @@
-package Controllers;public class CustomerMenu {
+package Controllers;
+
+public class CustomerMenu {
 }

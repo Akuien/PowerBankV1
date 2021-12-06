@@ -1,2 +1,4 @@
-package Controllers;public class ShareholderMenu {
+package Controllers;
+
+public class ShareholderMenu {
 }
