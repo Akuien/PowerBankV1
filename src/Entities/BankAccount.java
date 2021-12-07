@@ -1,12 +1,15 @@
 package Entities;
 
+import java.util.Objects;
+
 public class BankAccount {
 
+    private static long customerSSN;
     private double balance;
     private String name;
     private long accountNumber;
     private String status;
-    private long customerSSN;
+    //private long customerSSN;
 
     public BankAccount (double balance, String name, long accountNumber, long customerSSN){
         this.balance = balance;
@@ -63,4 +66,7 @@ public class BankAccount {
     public void setCustomerSSN(long customerSSN) {
         this.customerSSN = customerSSN;
     }
-}
+
+    public static boolean hasSameCustomerSSN(long anotherCustomerSSN){ return Objects.equals(customerSSN, anotherCustomerSSN); }
+
+    }

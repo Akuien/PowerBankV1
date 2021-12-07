@@ -41,5 +41,24 @@ public class Employee extends User{
         }
     }
 
+  public BankAccount getBankAccount(long customerSSN) {
+      for (BankAccount BankAccount : bankAccounts) {
+          if (Entities.BankAccount.hasSameCustomerSSN(customerSSN)) {
+              return BankAccount;
+          }
+      }
+      return null;
+  }
+
+    public String removeBankAccount (long customerSSN){
+        BankAccount desiredBankAccount = getBankAccount(customerSSN);
+
+        if (bankAccounts.contains(desiredBankAccount)) {
+            bankAccounts.remove(desiredBankAccount);
+            return ("Account was successfully removed.");
+
+        }
+        return (" Account could not be removed.");
+    }
 }
 
