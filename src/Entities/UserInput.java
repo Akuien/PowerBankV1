@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class UserInput {
 
-    private final Scanner input = new Scanner(System.in);
+    public final Scanner input = new Scanner(System.in);
 
     // method that takes in a message like "Enter an int value" and returns that value.
     public int inputInt(String message){

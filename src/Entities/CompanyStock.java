@@ -5,12 +5,11 @@ import java.util.Random;
 
 public class CompanyStock {
 
-    private String name; // Shorter name then the company name "AMZN".
     private String companyName; // example Amazon
     private double tradingPrice; //Price for buying one share
-    private double ValuePercentChange; // If the stock has decreased or increased %
+    private double valuePercentChange; // If the stock has decreased or increased %
     private double companyMarketValue; // tradingPrice * TotalCapitalShares
-    private double TotalCapitalShares; // total amount of shares that are for sale.
+    private double totalCapitalShares; // total amount of shares that are for sale.
     private int totalStockHolder; // amount of people owns the stock
 
     /*private ArrayList<CompanyStock> stockList = new ArrayList();*/
@@ -19,28 +18,31 @@ public class CompanyStock {
     //constructor
 
 
-    public CompanyStock(String name, String companyName, double tradingPrice, double valuePercentChange, double companyMarketValue, double totalCapitalShares, int totalStockHolder) {
-        this.name = name;
+    public CompanyStock( String companyName, double tradingPrice, double valuePercentChange, double companyMarketValue, double totalCapitalShares, int totalStockHolder) {
         this.companyName = companyName;
         this.tradingPrice = tradingPrice;
-        this.ValuePercentChange = valuePercentChange;
+        this.valuePercentChange = valuePercentChange;
         this.companyMarketValue = companyMarketValue;
-        this.TotalCapitalShares = totalCapitalShares;
+        this.totalCapitalShares = totalCapitalShares;
         this.totalStockHolder = totalStockHolder;
     }
 
-    public double CalCompanyMarketValue(double tradingPrice, int totalStockHolder){
-        companyMarketValue = tradingPrice * totalStockHolder;
+    //Calculates the value of the company at is whole.
+    public double CalCompanyMarketValue(double tradingPrice, int totalCapitalShares){
+        companyMarketValue = tradingPrice * totalCapitalShares;
         return companyMarketValue;
     }
 
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public String toString() {
+        return "CompanyStock{" +
+                "companyName='" + companyName + '\'' +
+                ", tradingPrice=" + tradingPrice +
+                ", ValuePercentChange=" + valuePercentChange +
+                ", companyMarketValue=" + companyMarketValue +
+                ", TotalCapitalShares=" + totalCapitalShares +
+                ", totalStockHolder=" + totalStockHolder +
+                '}';
     }
 
     public String getCompanyName() {
@@ -60,11 +62,11 @@ public class CompanyStock {
     }
 
     public double getValuePercentChange() {
-        return ValuePercentChange;
+        return valuePercentChange;
     }
 
     public void setValuePercentChange(double valuePercentChange) {
-        ValuePercentChange = valuePercentChange;
+        valuePercentChange = valuePercentChange;
     }
 
     public double getCompanyMarketValue() {
@@ -76,11 +78,11 @@ public class CompanyStock {
     }
 
     public double getTotalCapitalShares() {
-        return TotalCapitalShares;
+        return totalCapitalShares;
     }
 
     public void setTotalCapitalShares(double totalCapitalShares) {
-        TotalCapitalShares = totalCapitalShares;
+        totalCapitalShares = totalCapitalShares;
     }
 
     public int getTotalStockHolder() {

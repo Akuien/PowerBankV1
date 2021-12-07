@@ -28,6 +28,7 @@ public class UserManagement {
     public String registerCustomer(String firstName,String lastName, long SSN, String nationality, String email, String phoneNumber, String password, int account) {
         if (containsCustomer(SSN)) { //checks for letters in ssn and if existing is there
             return "This customer is already registered";
+
         } else if (nationality.isEmpty()) {
             return "Please enter the country you are currently living in";
 
@@ -119,7 +120,6 @@ public class UserManagement {
 
     }
 
-    
 
     public Customer findCustomerBySSN (long SSN) {
         for (Customer customer : customerList) {

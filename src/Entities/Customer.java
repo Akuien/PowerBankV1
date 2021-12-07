@@ -2,12 +2,12 @@ package Entities;
 
 import java.util.ArrayList;
 
-public class Customer extends User {
+public class Customer extends User implements BuySellShares {
 
     private int account;
     private ArrayList<Mortgage> mortgages = new ArrayList();
     private ArrayList<BankAccount> bankAccounts = new ArrayList();
-
+    private ArrayList<CompanyStock> ownedCompanyStock = new ArrayList();
 
 
     //Constructor
@@ -32,5 +32,13 @@ public class Customer extends User {
     public ArrayList<BankAccount> getBankAccounts(){return bankAccounts;}
 
 
+    @Override
+    public void buyShares() {
 
+    }
+
+    @Override
+    public void sellShares() {
+
+    }
 }

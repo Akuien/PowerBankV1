@@ -92,12 +92,9 @@ public class EmployeeManagement {
         }
     }
 
-    public String registerCompanyStock(String name, String companyName, double tradingPrice, double valuePercentChange, double companyMarketValue, double totalCapitalShares, int totalStockHolder) {
+    public String registerCompanyStock( String companyName, double tradingPrice, double valuePercentChange, double companyMarketValue, double totalCapitalShares, int totalStockHolder) {
 
-        if (name.isBlank() || containsCompany(name)) {
-            return "Name cannot be empty"+System.lineSeparator() +
-                    "There is already a company with this name. Please check if the company is already registered";
-        } else if (companyName.isBlank() || containsCompany(companyName)) {
+        if (companyName.isBlank() || containsCompany(companyName)) {
             return "Name cannot be empty"+System.lineSeparator() +
                     "There is already a company with this name. Please check if the company is already registered";
         } else if(tradingPrice < 0){
@@ -106,16 +103,16 @@ public class EmployeeManagement {
         }else if (totalStockHolder < 0){
             return "total number of stockholders can't be negative";
         }else {
-            CompanyStock companyStock = new CompanyStock( name,  companyName,  tradingPrice,  valuePercentChange, companyMarketValue, totalCapitalShares, totalStockHolder);
+            CompanyStock companyStock = new CompanyStock(  companyName,  tradingPrice,  valuePercentChange, companyMarketValue, totalCapitalShares, totalStockHolder);
             CompanyStockList.add(companyStock);
             return "Company was registered successfully";
         }
     }
 
-    public boolean containsCompany(String name) {
+    public boolean containsCompany(String companyName) {
 
         for (int i = 0; i < getCompanyStockList().size(); i++) {
-            if (getCompanyStockList().get(i).getName().equals(name)) {
+            if (getCompanyStockList().get(i).getCompanyName().equals(companyName)) {
                 return true;
             }
         }
